@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المتطوعون | YOU Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/tokens.css"><link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" data-sidebar>
+    <div class="sidebar-header"><img src="../../shared/logo.svg" alt="YOU Logo" class="admin-logo"><button class="icon-btn mobile-close" onclick="toggleSidebar()">✕</button></div>
+        <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">📊</span> نظرة عامة</a>
+      <a href="projects.html"><span class="ic">📝</span> إدارة المشاريع</a>
+      <a href="donations.html"><span class="ic">💰</span> التبرعات والمانحين</a>
+      <a href="news.html"><span class="ic">📰</span> الأخبار والإعلام</a>
+      <a href="volunteers.html" class="active"><span class="ic">👥</span> المتطوعون</a>
+      <a href="reports.html"><span class="ic">📈</span> التقارير</a>
+      <a href="users.html"><span class="ic">🛡️</span> المستخدمون</a>
+      <a href="settings.html"><span class="ic">⚙️</span> إعدادات المنصة</a>
+    </nav>
+    <div class="sidebar-footer"><div class="user-profile"><div class="avatar">A</div><div class="user-info"><strong>المدير العام</strong><span>admin@you.org</span></div></div><button class="btn btn-outline" style="width:100%; padding:.5rem; margin-top:1rem;" onclick="adminLogout()">تسجيل خروج</button></div>
+  </aside>
+  <main class="admin-main">
+    <header class="main-header"><div class="header-left"><button class="icon-btn sidebar-toggle" onclick="toggleSidebar()">☰</button><h1 class="page-title">إدارة المتطوعين</h1></div><div class="header-right"><div class="search-bar"><input type="text" placeholder="بحث باسم المتطوع أو تخصصه..."><span class="ic">🔍</span></div><button class="icon-btn" onclick="YOUtoggleTheme()"><span data-theme-icon>☀️</span></button><button class="icon-btn" aria-label="Notifications">🔔<span class="badge-dot"></span></button></div></header>
+    <div class="content-body reveal in">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon">👥</div><div class="stat-info"><span class="label">إجمالي المتطوعين</span><span class="value">124</span></div></div>
+        <div class="stat-card"><div class="stat-icon">⭐</div><div class="stat-info"><span class="label">متوسط التقييم</span><span class="value">4.7</span></div></div>
+        <div class="stat-card"><div class="stat-icon">🆕</div><div class="stat-info"><span class="label">طلبات جديدة</span><span class="value">12</span><span class="trend up">+3</span></div></div>
+      </div>
+      <div class="filter-bar"><button class="filter-btn active">الكل</button><button class="filter-btn">الطلبات الجديدة (12)</button><button class="filter-btn">المعتمدون</button><button class="filter-btn">طبي</button><button class="filter-btn">تعليم وتدريب</button><button class="filter-btn">إغاثي</button></div>
+      <div class="vol-grid">
+        <div class="vol-card"><div class="vol-avatar">👨‍⚕️</div><h3>د. أحمد سعيد</h3><div class="vol-role">طبيب عام - فريق الطوارئ</div><div class="vol-stars">★★★★★</div><div class="vol-skills"><span class="skill-tag">إسعافات أولية</span><span class="skill-tag">طب ميداني</span><span class="skill-tag">قيادة فرق</span></div><div class="vol-actions"><button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">الملف</button><button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">رسالة</button></div></div>
+        <div class="vol-card"><div class="vol-avatar" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.05)); border-color:var(--warning);">👩‍🏫</div><h3>سارة العبسي</h3><div class="vol-role">أخصائية نفسية</div><div class="vol-stars">★★★★☆</div><div class="vol-skills"><span class="skill-tag">دعم نفسي</span><span class="skill-tag">أطفال</span><span class="skill-tag">تدريب</span></div><div class="vol-actions"><button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">الملف</button><button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">رسالة</button></div></div>
+        <div class="vol-card" style="border-color:var(--primary); box-shadow:var(--sh-glow-primary);"><div class="vol-avatar" style="font-size:2.5rem; animation:pulse-dot 2s infinite;">🔥</div><h3>طلب تطوع جديد</h3><div class="vol-role">خالد مهدي - مهندس مدني</div><div style="font-size:var(--fs-xs); color:var(--text-muted); margin-bottom:1rem;">منذ ساعتين</div><div class="vol-skills"><span class="skill-tag">إدارة مشاريع</span><span class="skill-tag">إشراف هندسي</span></div><div class="vol-actions"><button class="btn btn-primary" style="padding:0.4rem 1rem; flex:1;">قبول</button><button class="btn btn-outline" style="padding:0.4rem 1rem; color:var(--danger); border-color:var(--danger);">رفض</button></div></div>
+        <div class="vol-card" style="border-color:var(--primary); box-shadow:var(--sh-glow-primary);"><div class="vol-avatar" style="font-size:2.5rem; animation:pulse-dot 2s infinite;">🔥</div><h3>طلب تطوع جديد</h3><div class="vol-role">ليلى حسان - مصممة جرافيك</div><div style="font-size:var(--fs-xs); color:var(--text-muted); margin-bottom:1rem;">منذ 5 ساعات</div><div class="vol-skills"><span class="skill-tag">تصميم</span><span class="skill-tag">سوشيال ميديا</span></div><div class="vol-actions"><button class="btn btn-primary" style="padding:0.4rem 1rem; flex:1;">قبول</button><button class="btn btn-outline" style="padding:0.4rem 1rem; color:var(--danger); border-color:var(--danger);">رفض</button></div></div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../../shared/app.js"></script>
+<script>function toggleSidebar() { document.querySelector('[data-sidebar]').classList.toggle('open'); }</script>
+</body>
+</html>

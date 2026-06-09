@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة تحكم المنظمة | YOU Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="admin-layout">
+  
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" data-sidebar>
+    <div class="sidebar-header">
+      <img src="../../shared/logo.svg" alt="YOU Logo" class="admin-logo">
+      <button class="icon-btn mobile-close" onclick="toggleSidebar()" aria-label="Close Sidebar">✕</button>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="index.html" class="active"><span class="ic">📊</span> نظرة عامة</a>
+      <a href="projects.html"><span class="ic">📝</span> إدارة المشاريع</a>
+      <a href="donations.html"><span class="ic">💰</span> التبرعات والمانحين</a>
+      <a href="news.html"><span class="ic">📰</span> الأخبار والإعلام</a>
+      <a href="volunteers.html"><span class="ic">👥</span> المتطوعون</a>
+      <a href="reports.html"><span class="ic">📈</span> التقارير</a>
+      <a href="users.html"><span class="ic">🛡️</span> المستخدمون</a>
+      <a href="settings.html"><span class="ic">⚙️</span> إعدادات المنصة</a>
+    </nav>
+    
+    <div class="sidebar-footer">
+      <div class="user-profile">
+        <div class="avatar">A</div>
+        <div class="user-info">
+          <strong>المدير العام</strong>
+          <span>admin@you.org</span>
+        </div>
+      </div>
+      <button class="btn btn-outline" style="width:100%; padding:.5rem; margin-top:1rem;" onclick="adminLogout()">تسجيل خروج</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    
+    <header class="main-header">
+      <div class="header-left">
+        <button class="icon-btn sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <h1 class="page-title">نظرة عامة</h1>
+      </div>
+      <div class="header-right">
+        <div class="search-bar">
+          <input type="text" placeholder="بحث سريع...">
+          <span class="ic">🔍</span>
+        </div>
+        <button class="icon-btn" onclick="YOUtoggleTheme()" aria-label="Theme"><span data-theme-icon>☀️</span></button>
+        <button class="icon-btn" aria-label="Notifications">🔔<span class="badge-dot"></span></button>
+      </div>
+    </header>
+
+    <div class="content-body reveal in">
+      
+      <!-- Quick Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(91, 168, 41, 0.2); color: var(--you-green-400);">👥</div>
+          <div class="stat-info">
+            <span class="label">إجمالي المستفيدين</span>
+            <span class="value">48,250</span>
+            <span class="trend up">+12% هذا الشهر</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(224, 169, 59, 0.2); color: var(--you-gold);">💰</div>
+          <div class="stat-info">
+            <span class="label">التبرعات (دولار)</span>
+            <span class="value">$124,500</span>
+            <span class="trend up">+5% هذا الشهر</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(11, 45, 82, 0.2); color: var(--primary);">📝</div>
+          <div class="stat-info">
+            <span class="label">المشاريع النشطة</span>
+            <span class="value">14</span>
+            <span class="trend neutral">مستقر</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(225, 29, 72, 0.2); color: var(--danger);">🤲</div>
+          <div class="stat-info">
+            <span class="label">طلبات التطوع</span>
+            <span class="value">85</span>
+            <span class="trend down">-2% هذا الشهر</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Area -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="card-title">نمو التبرعات (2026)</h3>
+          <canvas id="donationsChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 class="card-title">توزيع المشاريع</h3>
+          <canvas id="projectsChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Activities Data Table -->
+      <div class="data-card">
+        <div class="data-header">
+          <h3 class="card-title">أحدث التبرعات والمساهمات</h3>
+          <button class="btn btn-outline" style="padding: .4rem 1rem;">عرض الكل</button>
+        </div>
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>رقم العملية</th>
+                <th>المانح / المتبرع</th>
+                <th>المشروع</th>
+                <th>المبلغ</th>
+                <th>التاريخ</th>
+                <th>الحالة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#TRX-9821</td>
+                <td>فاعل خير (مجهول)</td>
+                <td>السلة الرمضانية</td>
+                <td class="amount">$500.00</td>
+                <td>2026-06-09</td>
+                <td><span class="status-badge success">مكتمل</span></td>
+              </tr>
+              <tr>
+                <td>#TRX-9820</td>
+                <td>مؤسسة غراس المجد</td>
+                <td>دفء الشتاء</td>
+                <td class="amount">$12,000.00</td>
+                <td>2026-06-08</td>
+                <td><span class="status-badge success">مكتمل</span></td>
+              </tr>
+              <tr>
+                <td>#TRX-9819</td>
+                <td>أحمد اليمني</td>
+                <td>كفالة يتيم</td>
+                <td class="amount">$150.00</td>
+                <td>2026-06-08</td>
+                <td><span class="status-badge pending">قيد المعالجة</span></td>
+              </tr>
+              <tr>
+                <td>#TRX-9818</td>
+                <td>شركة الأفق للتجارة</td>
+                <td>مجتمع بلا قات</td>
+                <td class="amount">$2,500.00</td>
+                <td>2026-06-07</td>
+                <td><span class="status-badge success">مكتمل</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../../shared/app.js"></script>
+<script>
+  // Sidebar Toggle
+  function toggleSidebar() {
+    document.querySelector('[data-sidebar]').classList.toggle('open');
+  }
+
+  // Chart.js init
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx1 = document.getElementById('donationsChart').getContext('2d');
+    new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+        datasets: [{
+          label: 'إجمالي التبرعات ($)',
+          data: [15000, 22000, 18000, 45000, 32000, 124500],
+          borderColor: '#7bd043',
+          backgroundColor: 'rgba(123, 208, 67, 0.1)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+
+    const ctx2 = document.getElementById('projectsChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: ['استجابة إنسانية', 'تنمية وتمكين', 'سلام وتعايش'],
+        datasets: [{
+          data: [55, 30, 15],
+          backgroundColor: ['#3b82f6', '#7bd043', '#f59e0b'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        cutout: '75%',
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+  });
+</script>
+</body>
+</html>

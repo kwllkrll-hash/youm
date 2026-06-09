@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إعدادات المنصة | YOU Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/tokens.css"><link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" data-sidebar>
+    <div class="sidebar-header"><img src="../../shared/logo.svg" alt="YOU Logo" class="admin-logo"><button class="icon-btn mobile-close" onclick="toggleSidebar()">✕</button></div>
+      <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">📊</span> نظرة عامة</a>
+      <a href="projects.html"><span class="ic">📝</span> إدارة المشاريع</a>
+      <a href="donations.html"><span class="ic">💰</span> التبرعات والمانحين</a>
+      <a href="news.html" class=""><span class="ic">📰</span> الأخبار والإعلام</a>
+      <a href="volunteers.html"><span class="ic">👥</span> المتطوعون</a>
+      <a href="reports.html"><span class="ic">📈</span> التقارير</a>
+      <a href="users.html"><span class="ic">🛡️</span> المستخدمون</a>
+      <a href="settings.html"  class="active" ><span class="ic">⚙️</span> إعدادات المنصة</a>
+    </nav>
+    <div class="sidebar-footer"><div class="user-profile"><div class="avatar">A</div><div class="user-info"><strong>المدير العام</strong><span>admin@you.org</span></div></div><button class="btn btn-outline" style="width:100%; padding:.5rem; margin-top:1rem;" onclick="adminLogout()">تسجيل خروج</button></div>
+  </aside>
+  <main class="admin-main">
+    <header class="main-header"><div class="header-left"><button class="icon-btn sidebar-toggle" onclick="toggleSidebar()">☰</button><h1 class="page-title">إعدادات المنصة</h1></div><div class="header-right"><button class="btn btn-primary" style="padding: 0.5rem 1.2rem;">حفظ التغييرات</button><button class="icon-btn" onclick="YOUtoggleTheme()"><span data-theme-icon>☀️</span></button></div></header>
+    <div class="content-body reveal in">
+      <div class="stats-grid" style="margin-bottom:2.5rem;">
+        <div class="stat-card" style="background:linear-gradient(135deg, var(--bg-soft), var(--bg)); border:1px solid rgba(255,255,255,0.05); box-shadow:var(--shadow-md);">
+          <div class="stat-icon" style="background:rgba(23,179,54,0.15); font-size:1.8rem; border-radius:14px;">🖥️</div>
+          <div class="stat-info"><span class="label" style="font-weight:700;">حالة الخادم</span><span class="value" style="color:#17b336; font-size:1.8rem;">مستقر</span><span class="trend up" style="font-weight:800;">99.9% Uptime</span></div>
+        </div>
+        <div class="stat-card" style="background:linear-gradient(135deg, var(--bg-soft), var(--bg)); border:1px solid rgba(255,255,255,0.05); box-shadow:var(--shadow-md);">
+          <div class="stat-icon" style="background:rgba(59,130,246,0.15); font-size:1.8rem; border-radius:14px;">👥</div>
+          <div class="stat-info"><span class="label" style="font-weight:700;">الجلسات النشطة</span><span class="value" style="font-size:1.8rem;">5</span><span class="trend up" style="font-weight:800;">+2 اليوم</span></div>
+        </div>
+        <div class="stat-card" style="background:linear-gradient(135deg, var(--bg-soft), var(--bg)); border:1px solid rgba(255,255,255,0.05); box-shadow:var(--shadow-md);">
+          <div class="stat-icon" style="background:rgba(245,158,11,0.15); font-size:1.8rem; border-radius:14px;">💾</div>
+          <div class="stat-info"><span class="label" style="font-weight:700;">آخر نسخة احتياطية</span><span class="value" style="font-size:1.6rem;">اليوم 03:00</span><span class="trend neutral" style="font-weight:800;">مزامنة تلقائية</span></div>
+        </div>
+      </div>
+      <div class="settings-tabs" style="display:flex; gap:1rem; margin-bottom:2rem; overflow-x:auto; padding-bottom:1rem;">
+        <button class="tab-btn active" onclick="switchTab(0)" style="padding:1rem 2rem; border-radius:16px; font-weight:800; border:none; background:var(--bg-soft); color:var(--text); cursor:pointer; transition:var(--ease); box-shadow:var(--shadow-sm);">عام ⚙️</button>
+        <button class="tab-btn" onclick="switchTab(1)" style="padding:1rem 2rem; border-radius:16px; font-weight:800; border:none; background:transparent; color:var(--text-soft); cursor:pointer; transition:var(--ease);">الأمان والصلاحيات 🔒</button>
+        <button class="tab-btn" onclick="switchTab(2)" style="padding:1rem 2rem; border-radius:16px; font-weight:800; border:none; background:transparent; color:var(--text-soft); cursor:pointer; transition:var(--ease);">بوابات الدفع 💳</button>
+        <button class="tab-btn" onclick="switchTab(3)" style="padding:1rem 2rem; border-radius:16px; font-weight:800; border:none; background:transparent; color:var(--text-soft); cursor:pointer; transition:var(--ease);">سجل النظام 📜</button>
+      </div>
+      <div class="form-card mx-auto" style="max-width: 900px; padding: 3rem; background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.05); box-shadow:0 15px 35px rgba(0,0,0,0.2); border-radius:24px;">
+        <div class="tab-panel active" id="tab-0">
+          <h3 class="card-title" style="font-size:1.5rem; font-weight:900; margin-bottom:2rem; color:var(--text); border-bottom:2px solid var(--border); padding-bottom:1rem;">الإعدادات العامة والتخصيص</h3>
+          <div class="field" style="margin-bottom:1.5rem;">
+            <label style="font-weight:800; color:var(--text); margin-bottom:0.8rem; display:block;">اسم المنظمة</label>
+            <input type="text" value="منظمة يو للسلام والتنمية" style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); color:var(--text); font-weight:700; font-size:1.05rem;">
+          </div>
+          <div class="field" style="margin-bottom:1.5rem;">
+            <label style="font-weight:800; color:var(--text); margin-bottom:0.8rem; display:block;">البريد الإلكتروني الرسمي للتواصل</label>
+            <input type="email" value="info@you-org.org" style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); color:var(--text); font-weight:700; font-size:1.05rem;">
+          </div>
+          <div class="field" style="margin-bottom:1.5rem;">
+            <label style="font-weight:800; color:var(--text); margin-bottom:0.8rem; display:block;">رقم الهاتف الموحد</label>
+            <input type="tel" value="+967 123 456 789" style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); color:var(--text); font-weight:700; font-size:1.05rem; direction:ltr; text-align:start;">
+          </div>
+          <div class="field" style="margin-bottom:1.5rem;">
+            <label style="font-weight:800; color:var(--text); margin-bottom:0.8rem; display:block;">وصف المنظمة (SEO Meta Description)</label>
+            <textarea rows="4" style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); color:var(--text); font-weight:700; font-size:1.05rem; resize:vertical; line-height:1.6;">منظمة يو للسلام والتنمية — منظمة مجتمع مدني يمنية تعمل على السلام والتعايش والتنمية والاستجابة الإنسانية وتمكين المجتمع.</textarea>
+          </div>
+          <div class="setting-row" style="margin-top:3rem; padding:1.5rem; background:var(--surface-2); border-radius:16px; display:flex; justify-content:space-between; align-items:center;">
+            <div class="setting-info">
+              <h4 style="font-weight:900; color:var(--text); margin-bottom:0.3rem;">وضع الصيانة (Maintenance Mode) 🛑</h4>
+              <p style="color:var(--text-soft); font-weight:600;">تفعيل وضع الصيانة سيمنع الزوار من تصفح الموقع وعرض صفحة "نعود قريباً".</p>
+            </div>
+            <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
+          </div>
+        </div>
+        <div class="tab-panel" id="tab-1">
+          <h3 class="card-title" style="font-size:1.5rem; font-weight:900; margin-bottom:2rem; color:var(--text); border-bottom:2px solid var(--border); padding-bottom:1rem;">الأمان والصلاحيات الإدارية</h3>
+          <div class="field" style="margin-bottom:2rem;">
+            <label style="font-weight:800; color:var(--text); margin-bottom:0.8rem; display:block;">رمز الدخول الموحد للإدارة (Admin Passcode)</label>
+            <input type="password" value="admin123" style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); color:var(--text); font-weight:900; font-size:1.2rem; letter-spacing:4px;">
+          </div>
+          <div class="setting-row" style="margin-bottom:1.5rem; padding:1.5rem; background:var(--surface-2); border-radius:16px; display:flex; justify-content:space-between; align-items:center;">
+            <div class="setting-info">
+              <h4 style="font-weight:900; color:var(--text); margin-bottom:0.3rem;">المصادقة الثنائية (2FA) 🛡️</h4>
+              <p style="color:var(--text-soft); font-weight:600;">طلب رمز تحقق إضافي عبر البريد عند الدخول للوحة التحكم.</p>
+            </div>
+            <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+          <div class="setting-row" style="padding:1.5rem; background:var(--surface-2); border-radius:16px; display:flex; justify-content:space-between; align-items:center;">
+            <div class="setting-info">
+              <h4 style="font-weight:900; color:var(--text); margin-bottom:0.3rem;">تسجيل خروج تلقائي ⏱️</h4>
+              <p style="color:var(--text-soft); font-weight:600;">إنهاء الجلسة تلقائياً بعد 30 دقيقة من الخمول للحفاظ على الأمان.</p>
+            </div>
+            <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+        </div>
+        <div class="tab-panel" id="tab-2">
+          <h3 class="card-title" style="font-size:1.5rem; font-weight:900; margin-bottom:2rem; color:var(--text); border-bottom:2px solid var(--border); padding-bottom:1rem;">إعدادات بوابات الدفع والتبرع المباشر</h3>
+          <div class="setting-row" style="margin-bottom:1.5rem; padding:1.5rem; background:var(--surface-2); border-radius:16px; display:flex; justify-content:space-between; align-items:center; border-left:4px solid #003087;">
+            <div class="setting-info">
+              <h4 style="font-weight:900; color:var(--text); margin-bottom:0.3rem; display:flex; align-items:center; gap:0.5rem;"><img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" style="width:20px;"> بوابة PayPal</h4>
+              <p style="color:var(--text-soft); font-weight:600;">استقبال التبرعات الدولية عبر حسابات باي بال بكل أمان وموثوقية.</p>
+            </div>
+            <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+          <div class="setting-row" style="margin-bottom:1.5rem; padding:1.5rem; background:var(--surface-2); border-radius:16px; display:flex; justify-content:space-between; align-items:center; border-left:4px solid #635bff;">
+            <div class="setting-info">
+              <h4 style="font-weight:900; color:var(--text); margin-bottom:0.3rem; display:flex; align-items:center; gap:0.5rem;"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png" style="width:20px;"> بوابة Stripe</h4>
+              <p style="color:var(--text-soft); font-weight:600;">معالجة مدفوعات البطاقات الائتمانية (Visa/Mastercard) مباشرة على الموقع.</p>
+            </div>
+            <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
+          </div>
+          <div class="setting-row" style="padding:1.5rem; background:var(--surface-2); border-radius:16px; display:flex; justify-content:space-between; align-items:center; border-left:4px solid var(--you-green);">
+            <div class="setting-info">
+              <h4 style="font-weight:900; color:var(--text); margin-bottom:0.3rem;">التحويل البنكي المباشر 🏦</h4>
+              <p style="color:var(--text-soft); font-weight:600;">إظهار بيانات الحسابات البنكية للمنظمة محلياً ودولياً في صفحة التبرع.</p>
+            </div>
+            <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+        </div>
+        <div class="tab-panel" id="tab-3">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; border-bottom:2px solid var(--border); padding-bottom:1rem;">
+            <h3 class="card-title" style="font-size:1.5rem; font-weight:900; margin:0; color:var(--text);">سجل نشاط النظام (Audit Log)</h3>
+            <button class="btn btn-outline" style="padding:0.5rem 1rem; font-size:0.9rem; border-radius:10px;">⬇️ تصدير PDF</button>
+          </div>
+          <div class="timeline" style="padding-right:1rem; border-right:3px solid var(--border); position:relative;">
+            <div class="timeline-item" style="position:relative; margin-bottom:2rem;">
+              <span style="position:absolute; right:-1.65rem; top:0; width:16px; height:16px; background:var(--you-green); border-radius:50%; border:3px solid var(--bg);"></span>
+              <div class="time" style="font-weight:900; color:var(--you-green); margin-bottom:0.3rem; font-size:0.9rem;">اليوم 10:45 ص</div>
+              <div class="desc" style="font-weight:700; color:var(--text); background:var(--surface-2); padding:1rem; border-radius:12px;">تم تسجيل الدخول بنجاح من حساب المدير العام. (IP: 192.168.1.1)</div>
+            </div>
+            <div class="timeline-item" style="position:relative; margin-bottom:2rem;">
+              <span style="position:absolute; right:-1.65rem; top:0; width:16px; height:16px; background:var(--you-navy); border-radius:50%; border:3px solid var(--bg);"></span>
+              <div class="time" style="font-weight:900; color:var(--text-soft); margin-bottom:0.3rem; font-size:0.9rem;">أمس 08:30 م</div>
+              <div class="desc" style="font-weight:700; color:var(--text); background:var(--surface-2); padding:1rem; border-radius:12px;">تم تصدير تقرير التبرعات الشهري لشهر مايو بنجاح.</div>
+            </div>
+            <div class="timeline-item" style="position:relative; margin-bottom:2rem;">
+              <span style="position:absolute; right:-1.65rem; top:0; width:16px; height:16px; background:var(--you-gold); border-radius:50%; border:3px solid var(--bg);"></span>
+              <div class="time" style="font-weight:900; color:var(--text-soft); margin-bottom:0.3rem; font-size:0.9rem;">أمس 02:15 م</div>
+              <div class="desc" style="font-weight:700; color:var(--text); background:var(--surface-2); padding:1rem; border-radius:12px;">تم تحديث حالة طلب التطوع "خالد مهدي" إلى: <strong style="color:var(--you-green);">مقبول</strong>.</div>
+            </div>
+            <div class="timeline-item" style="position:relative;">
+              <span style="position:absolute; right:-1.65rem; top:0; width:16px; height:16px; background:var(--you-navy); border-radius:50%; border:3px solid var(--bg);"></span>
+              <div class="time" style="font-weight:900; color:var(--text-soft); margin-bottom:0.3rem; font-size:0.9rem;">07 يونيو 11:00 ص</div>
+              <div class="desc" style="font-weight:700; color:var(--text); background:var(--surface-2); padding:1rem; border-radius:12px;">تم نشر مقال إخباري جديد: "انطلاق حملة السلة الرمضانية في مأرب".</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../../shared/app.js"></script>
+<script>
+function toggleSidebar() { document.querySelector('[data-sidebar]').classList.toggle('open'); }
+function switchTab(index) { document.querySelectorAll('.tab-btn').forEach((btn,i)=>{btn.classList.toggle('active',i===index);}); document.querySelectorAll('.tab-panel').forEach((panel,i)=>{panel.classList.toggle('active',i===index);}); }
+</script>
+</body>
+</html>

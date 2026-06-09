@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إدارة المشاريع | YOU Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="admin-layout">
+  
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" data-sidebar>
+    <div class="sidebar-header">
+      <img src="../../shared/logo.svg" alt="YOU Logo" class="admin-logo">
+      <button class="icon-btn mobile-close" onclick="toggleSidebar()" aria-label="Close Sidebar">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">📊</span> نظرة عامة</a>
+      <a href="projects.html" class="active"><span class="ic">📝</span> إدارة المشاريع</a>
+      <a href="donations.html"><span class="ic">💰</span> التبرعات والمانحين</a>
+      <a href="news.html"><span class="ic">📰</span> الأخبار والإعلام</a>
+      <a href="volunteers.html"><span class="ic">👥</span> المتطوعون</a>
+      <a href="reports.html"><span class="ic">📈</span> التقارير</a>
+      <a href="users.html"><span class="ic">🛡️</span> المستخدمون</a>
+      <a href="settings.html"><span class="ic">⚙️</span> إعدادات المنصة</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-profile">
+        <div class="avatar">A</div>
+        <div class="user-info"><strong>المدير العام</strong><span>admin@you.org</span></div>
+      </div>
+      <button class="btn btn-outline" style="width:100%; padding:.5rem; margin-top:1rem;" onclick="adminLogout()">تسجيل خروج</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <header class="main-header">
+      <div class="header-left">
+        <button class="icon-btn sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <h1 class="page-title">إدارة المشاريع</h1>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-primary" style="padding: 0.5rem 1.2rem;">+ مشروع جديد</button>
+        <button class="icon-btn" onclick="YOUtoggleTheme()" aria-label="Theme"><span data-theme-icon>☀️</span></button>
+        <button class="icon-btn" aria-label="Notifications">🔔<span class="badge-dot"></span></button>
+      </div>
+    </header>
+
+    <div class="content-body">
+      
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(91, 168, 41, 0.15); color: var(--you-green-400);">📁</div>
+          <div class="stat-info">
+            <span class="label">إجمالي المشاريع</span>
+            <span class="value">36</span>
+            <span class="trend up">+3 هذا الربع</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(59, 130, 246, 0.15); color: var(--primary);">🚀</div>
+          <div class="stat-info">
+            <span class="label">المشاريع النشطة</span>
+            <span class="value">14</span>
+            <span class="trend neutral">مستقر</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(23, 179, 54, 0.15); color: var(--success);">✅</div>
+          <div class="stat-info">
+            <span class="label">مشاريع مكتملة</span>
+            <span class="value">19</span>
+            <span class="trend up">+5 هذا العام</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(224, 169, 59, 0.15); color: var(--you-gold);">💵</div>
+          <div class="stat-info">
+            <span class="label">الميزانية الكلية</span>
+            <span class="value">$285K</span>
+            <span class="trend up">+18%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="card-title">تقدم المشاريع النشطة</h3>
+          <canvas id="projProgressChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 class="card-title">التوزيع حسب القطاع</h3>
+          <canvas id="projSectorChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Filter -->
+      <div class="filter-bar">
+        <button class="filter-btn active">الكل</button>
+        <button class="filter-btn">نشط</button>
+        <button class="filter-btn">مكتمل</button>
+        <button class="filter-btn">متوقف</button>
+        <button class="filter-btn">قيد التخطيط</button>
+      </div>
+
+      <!-- Project Cards -->
+      <div class="proj-admin-grid">
+        
+        <div class="proj-admin-card">
+          <div class="proj-thumb">
+            <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&q=80&w=800" alt="السلة الرمضانية" loading="lazy">
+            <span class="status-badge success proj-badge">نشط</span>
+          </div>
+          <div class="proj-body">
+            <h3>السلة الرمضانية للأسر النازحة</h3>
+            <p style="color:var(--text-soft); font-size:var(--fs-sm); line-height:1.5;">توزيع سلل غذائية متكاملة على الأسر النازحة في مخيمات مأرب خلال شهر رمضان المبارك.</p>
+            <div class="proj-meta">
+              <span>$41,000 / $50,000</span>
+              <span style="color:var(--accent); font-weight:900;">82%</span>
+            </div>
+            <div class="progress"><span style="width:82%"></span></div>
+            <div class="proj-actions">
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">تعديل</button>
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">التقرير</button>
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; color:var(--danger); border-color:var(--danger);">إيقاف</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-admin-card">
+          <div class="proj-thumb">
+            <img src="https://images.unsplash.com/photo-1535090467336-9501f96eef89?auto=format&fit=crop&q=80&w=800" alt="دفء الشتاء" loading="lazy">
+            <span class="status-badge success proj-badge">نشط</span>
+          </div>
+          <div class="proj-body">
+            <h3>دفء الشتاء للأسر النازحة</h3>
+            <p style="color:var(--text-soft); font-size:var(--fs-sm); line-height:1.5;">توفير حقائب شتوية ومستلزمات التدفئة للنازحين في المخيمات لمواجهة برد الشتاء.</p>
+            <div class="proj-meta">
+              <span>$13,400 / $20,000</span>
+              <span style="color:var(--accent); font-weight:900;">67%</span>
+            </div>
+            <div class="progress"><span style="width:67%"></span></div>
+            <div class="proj-actions">
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">تعديل</button>
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">التقرير</button>
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; color:var(--danger); border-color:var(--danger);">إيقاف</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-admin-card">
+          <div class="proj-thumb">
+            <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb0?auto=format&fit=crop&q=80&w=800" alt="مبادرة مجتمع بلا قات" loading="lazy">
+            <span class="status-badge info proj-badge">قيد التطوير</span>
+          </div>
+          <div class="proj-body">
+            <h3>مبادرة مجتمع بلا قات</h3>
+            <p style="color:var(--text-soft); font-size:var(--fs-sm); line-height:1.5;">حملة توعوية شاملة للشباب حول أضرار القات وبناء بدائل صحية للمجتمع.</p>
+            <div class="proj-meta">
+              <span>$8,250 / $15,000</span>
+              <span style="color:var(--accent); font-weight:900;">55%</span>
+            </div>
+            <div class="progress"><span style="width:55%"></span></div>
+            <div class="proj-actions">
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">تعديل</button>
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">التقرير</button>
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; color:var(--danger); border-color:var(--danger);">إيقاف</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-admin-card">
+          <div class="proj-thumb">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=800" alt="كفالة الأيتام" loading="lazy">
+            <span class="status-badge pending proj-badge">قيد التخطيط</span>
+          </div>
+          <div class="proj-body">
+            <h3>برنامج كفالة الأيتام</h3>
+            <p style="color:var(--text-soft); font-size:var(--fs-sm); line-height:1.5;">رعاية أيتام الحرب وتوفير الدعم التعليمي والنفسي والمادي لهم ولأسرهم.</p>
+            <div class="proj-meta">
+              <span>$0 / $30,000</span>
+              <span style="color:var(--text-muted); font-weight:900;">0%</span>
+            </div>
+            <div class="progress"><span style="width:0%"></span></div>
+            <div class="proj-actions">
+              <button class="btn btn-primary" style="padding:0.4rem 1rem; flex:1;">إطلاق</button>
+              <button class="btn btn-outline" style="padding:0.4rem 1rem; flex:1;">تعديل</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../../shared/app.js"></script>
+<script>
+function toggleSidebar() { document.querySelector('[data-sidebar]').classList.toggle('open'); }
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Project Progress Chart
+  const ctx1 = document.getElementById('projProgressChart').getContext('2d');
+  new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['السلة الرمضانية', 'دفء الشتاء', 'بلا قات', 'كفالة أيتام', 'تمكين الشباب', 'مياه نظيفة'],
+      datasets: [{
+        label: 'نسبة الإنجاز %',
+        data: [82, 67, 55, 0, 45, 30],
+        backgroundColor: [
+          'rgba(123, 208, 67, 0.8)',
+          'rgba(59, 130, 246, 0.8)',
+          'rgba(245, 158, 11, 0.8)',
+          'rgba(100, 116, 139, 0.4)',
+          'rgba(14, 165, 233, 0.8)',
+          'rgba(224, 169, 59, 0.8)'
+        ],
+        borderRadius: 8,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // Sector Distribution Chart
+  const ctx2 = document.getElementById('projSectorChart').getContext('2d');
+  new Chart(ctx2, {
+    type: 'doughnut',
+    data: {
+      labels: ['استجابة إنسانية', 'تنمية وتمكين', 'سلام وتعايش', 'مبادرات مجتمعية'],
+      datasets: [{
+        data: [45, 25, 15, 15],
+        backgroundColor: ['#3b82f6', '#7bd043', '#f59e0b', '#0ea5e9'],
+        borderWidth: 0,
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: '72%',
+      plugins: { legend: { position: 'bottom', labels: { padding: 15, font: { weight: 'bold' } } } }
+    }
+  });
+});
+</script>
+</body>
+</html>

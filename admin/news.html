@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الأخبار والإعلام | YOU Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" data-sidebar>
+    <div class="sidebar-header">
+      <img src="../../shared/logo.svg" alt="YOU Logo" class="admin-logo">
+      <button class="icon-btn mobile-close" onclick="toggleSidebar()">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">📊</span> نظرة عامة</a>
+      <a href="projects.html"><span class="ic">📝</span> إدارة المشاريع</a>
+      <a href="donations.html"><span class="ic">💰</span> التبرعات والمانحين</a>
+      <a href="news.html" class="active"><span class="ic">📰</span> الأخبار والإعلام</a>
+      <a href="volunteers.html"><span class="ic">👥</span> المتطوعون</a>
+      <a href="reports.html"><span class="ic">📈</span> التقارير</a>
+      <a href="users.html"><span class="ic">🛡️</span> المستخدمون</a>
+      <a href="settings.html"><span class="ic">⚙️</span> إعدادات المنصة</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-profile"><div class="avatar">A</div><div class="user-info"><strong>المدير العام</strong><span>admin@you.org</span></div></div>
+      <button class="btn btn-outline" style="width:100%; padding:.5rem; margin-top:1rem;" onclick="adminLogout()">تسجيل خروج</button>
+    </div>
+  </aside>
+  <main class="admin-main">
+    <header class="main-header">
+      <div class="header-left"><button class="icon-btn sidebar-toggle" onclick="toggleSidebar()">☰</button><h1 class="page-title">الأخبار والإعلام</h1></div>
+      <div class="header-right">
+        <button class="btn btn-primary" style="padding: 0.5rem 1.2rem;" onclick="document.getElementById('composeModal').classList.add('active')">+ مقال جديد</button>
+        <button class="icon-btn" onclick="YOUtoggleTheme()"><span data-theme-icon>☀️</span></button>
+        <button class="icon-btn" aria-label="Notifications">🔔<span class="badge-dot"></span></button>
+      </div>
+    </header>
+    <div class="content-body reveal in">
+      <!-- Stats Row -->
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon" style="background:rgba(59,130,246,0.2);">📰</div><div class="stat-info"><span class="label">إجمالي المقالات</span><span class="value">28</span><span class="trend up">+4 هذا الشهر</span></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:rgba(123,208,67,0.2);">✅</div><div class="stat-info"><span class="label">منشور</span><span class="value">19</span><span class="trend up">+2</span></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:rgba(245,158,11,0.2);">✏️</div><div class="stat-info"><span class="label">مسودة</span><span class="value">6</span><span class="trend neutral">-</span></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:rgba(14,165,233,0.2);">📈</div><div class="stat-info"><span class="label">نسبة التفاعل</span><span class="value">78%</span><span class="trend up">+12%</span></div></div>
+      </div>
+      <!-- Charts -->
+      <div class="charts-grid">
+        <div class="chart-card"><h3 class="card-title">نشر المقالات (آخر 6 أشهر)</h3><canvas id="newsTrendChart" height="100"></canvas></div>
+        <div class="chart-card"><h3 class="card-title">التصنيفات</h3><canvas id="newsCategoryChart" height="200"></canvas></div>
+      </div>
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active">الكل</button>
+        <button class="filter-btn">منشور</button>
+        <button class="filter-btn">مسودة</button>
+        <button class="filter-btn">مجدول</button>
+      </div>
+      <!-- News Cards Grid -->
+      <div class="news-admin-grid">
+        <div class="news-admin-card"><div class="news-thumb"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=800" alt="News" loading="lazy"></div><div class="news-body"><span class="status-badge success" style="margin-bottom:0.8rem; align-self:flex-start;">منشور</span><h3>انطلاق حملة السلة الرمضانية في مأرب بمشاركة 50 متطوعاً</h3><p>تم إطلاق حملة السلة الرمضانية بنجاح باهر في محافظة مأرب، مستهدفة الأسر النازحة والأكثر احتياجاً، بتنفيذ مباشر من المنظمة.</p><div class="news-footer"><span>قبل يومين</span><div style="display:flex; gap:0.5rem;"><button class="btn btn-ghost" style="padding:0.2rem 0.6rem; font-size:var(--fs-xs);">تعديل</button><button class="btn btn-ghost" style="padding:0.2rem 0.6rem; font-size:var(--fs-xs); color:var(--danger);">حذف</button></div></div></div></div>
+        <div class="news-admin-card"><div class="news-thumb"><img src="https://images.unsplash.com/photo-1529156069898-49953eb1f5bc?auto=format&fit=crop&q=80&w=800" alt="News" loading="lazy"></div><div class="news-body"><span class="status-badge success" style="margin-bottom:0.8rem; align-self:flex-start;">منشور</span><h3>اختتام دورة "القيادة المجتمعية" للشباب</h3><p>ضمن برامج التمكين، تم تخريج الدفعة الثالثة من شباب مأرب في برنامج القيادة المجتمعية والتخطيط الاستراتيجي.</p><div class="news-footer"><span>15 مايو 2026</span><div style="display:flex; gap:0.5rem;"><button class="btn btn-ghost" style="padding:0.2rem 0.6rem; font-size:var(--fs-xs);">تعديل</button><button class="btn btn-ghost" style="padding:0.2rem 0.6rem; font-size:var(--fs-xs); color:var(--danger);">حذف</button></div></div></div></div>
+        <div class="news-admin-card"><div class="news-thumb"><img src="https://images.unsplash.com/photo-1535090467336-9501f96eef89?auto=format&fit=crop&q=80&w=800" alt="News" loading="lazy"></div><div class="news-body"><span class="status-badge pending" style="margin-bottom:0.8rem; align-self:flex-start;">مسودة</span><h3>تجهيز قوافل "دفء الشتاء" للشهر القادم</h3><p>التقرير الأولي لاستعدادات المنظمة لتسيير قوافل التدفئة الشتوية للنازحين في المناطق المرتفعة.</p><div class="news-footer"><span>تحديث: قبل ساعتين</span><div style="display:flex; gap:0.5rem;"><button class="btn btn-primary" style="padding:0.2rem 0.6rem; font-size:var(--fs-xs);">نشر</button><button class="btn btn-ghost" style="padding:0.2rem 0.6rem; font-size:var(--fs-xs);">تعديل</button></div></div></div></div>
+      </div>
+    </div>
+  </main>
+</div>
+<!-- Compose Modal - Legendary Epic Redesign -->
+<div class="admin-modal-overlay" id="composeModal">
+  <div class="admin-modal-card" style="max-width:900px; width:95%; text-align:start; background:var(--glass-bg); backdrop-filter:blur(30px); border:1px solid rgba(255,255,255,0.1); box-shadow:0 25px 50px rgba(0,0,0,0.5); border-radius:24px; padding:0; overflow:hidden;">
+    <div style="background:linear-gradient(135deg, var(--you-navy), #061930); padding:2rem; position:relative;">
+      <button class="icon-btn" onclick="document.getElementById('composeModal').classList.remove('active')" style="position:absolute; left:2rem; top:2rem; background:rgba(255,255,255,0.1); color:#fff;">✕</button>
+      <h3 style="font-size:var(--fs-2xl); font-weight:900; margin:0; color:#fff; display:flex; align-items:center; gap:1rem;"><span style="background:var(--you-green); padding:0.5rem; border-radius:12px; font-size:1.5rem;">📝</span> إضافة مقال أو خبر جديد</h3>
+      <p style="color:rgba(255,255,255,0.7); margin-top:0.5rem; margin-right:3.5rem;">انشر إنجازات المنظمة وشارك قصص النجاح مع المجتمع بشفافية واحترافية.</p>
+    </div>
+    <div style="padding:2rem;">
+      <div style="display:grid; grid-template-columns:2fr 1fr; gap:2rem;">
+        <div>
+          <div class="field" style="margin-bottom:1.5rem;">
+            <label style="font-weight:800; margin-bottom:0.8rem; display:block; color:var(--text);">عنوان المقال الجذاب</label>
+            <input type="text" placeholder="اكتب العنوان هنا..." style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); font-size:1.1rem; font-weight:700; transition:var(--ease); color:var(--text);">
+          </div>
+          <div class="field">
+            <label style="font-weight:800; margin-bottom:0.8rem; display:block; color:var(--text);">محتوى المقال (المحرر السحري)</label>
+            <div style="border:2px solid var(--border); border-radius:16px; background:var(--bg); overflow:hidden; transition:var(--ease);">
+              <div style="background:var(--surface-2); padding:0.8rem; display:flex; gap:0.5rem; border-bottom:1px solid var(--border); flex-wrap:wrap;">
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem; font-weight:900;">B</button>
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem; font-style:italic; font-family:serif;">I</button>
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem; text-decoration:underline;">U</button>
+                <div style="width:1px; background:var(--border); margin:0 0.5rem;"></div>
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem;">H1</button>
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem;">H2</button>
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem;">H3</button>
+                <div style="width:1px; background:var(--border); margin:0 0.5rem;"></div>
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem;">🔗</button>
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem;">📷</button>
+                <button class="btn btn-ghost" style="padding:0.4rem 0.8rem;">🎥</button>
+              </div>
+              <textarea rows="12" placeholder="اكتب التفاصيل والمحتوى هنا... يمكنك استخدام التنسيقات السحرية لإضافة جاذبية لخبرك." style="width:100%; padding:1.5rem; border:none; background:transparent; resize:vertical; font-size:1.05rem; line-height:1.8; color:var(--text); outline:none; font-family:inherit;"></textarea>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+          <div class="field">
+            <label style="font-weight:800; margin-bottom:0.8rem; display:block; color:var(--text);">الصورة البارزة (غلاف المقال)</label>
+            <div style="border:2px dashed var(--border); border-radius:16px; padding:2rem; text-align:center; background:var(--surface-2); cursor:pointer; transition:var(--ease);">
+              <span style="font-size:3rem; display:block; margin-bottom:1rem;">🖼️</span>
+              <p style="font-weight:700; color:var(--text-soft); margin-bottom:0.5rem;">اضغط لرفع صورة أو اسحبها هنا</p>
+              <small style="color:var(--text-soft); opacity:0.7;">أبعاد مفضلة (16:9) - دقة عالية</small>
+            </div>
+          </div>
+          <div class="field">
+            <label style="font-weight:800; margin-bottom:0.8rem; display:block; color:var(--text);">التصنيف</label>
+            <select style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); color:var(--text); font-weight:700; cursor:pointer;">
+              <option>استجابة إنسانية</option>
+              <option>تمكين وتدريب</option>
+              <option>سلام وتعايش</option>
+              <option>مبادرات مجتمعية</option>
+              <option>أخبار المنظمة</option>
+            </select>
+          </div>
+          <div class="field">
+            <label style="font-weight:800; margin-bottom:0.8rem; display:block; color:var(--text);">الكلمات المفتاحية (Tags)</label>
+            <input type="text" placeholder="اكتب واضغط Enter..." style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); color:var(--text);">
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.8rem;">
+              <span style="background:var(--surface-2); padding:0.4rem 0.8rem; border-radius:20px; font-size:var(--fs-xs); font-weight:700;">نازحين ✕</span>
+              <span style="background:var(--surface-2); padding:0.4rem 0.8rem; border-radius:20px; font-size:var(--fs-xs); font-weight:700;">مأرب ✕</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:1rem; justify-content:flex-end; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border);">
+        <button class="btn btn-ghost" onclick="document.getElementById('composeModal').classList.remove('active')" style="padding:1rem 2rem;">إلغاء</button>
+        <button class="btn btn-outline" style="padding:1rem 2rem;">حفظ كمسودة 💾</button>
+        <button class="btn btn-primary" onclick="document.getElementById('composeModal').classList.remove('active')" style="padding:1rem 3rem; font-size:1.1rem; box-shadow:0 10px 20px rgba(123,208,67,0.3);">نشر المقال الآن 🚀</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../shared/app.js"></script>
+<script>
+function toggleSidebar() { document.querySelector('[data-sidebar]').classList.toggle('open'); }
+document.addEventListener('DOMContentLoaded', function() {
+  const ctxTrend = document.getElementById('newsTrendChart').getContext('2d');
+  new Chart(ctxTrend, { type: 'line', data: { labels: ['يناير','فبراير','مارس','أبريل','مايو','يونيو'], datasets: [{ label: 'المقالات', data: [2,5,3,7,4,6], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', fill: true, tension: 0.4 }] }, options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } } });
+  const ctxCat = document.getElementById('newsCategoryChart').getContext('2d');
+  new Chart(ctxCat, { type: 'doughnut', data: { labels: ['استجابة إنسانية','تمكين','سلام','مبادرات'], datasets: [{ data: [45,25,20,10], backgroundColor: ['#3b82f6','#7bd043','#f59e0b','#0ea5e9'] }] }, options: { cutout: '70%', plugins: { legend: { position: 'bottom' } } } });
+});
+</script>
+</body>
+</html>

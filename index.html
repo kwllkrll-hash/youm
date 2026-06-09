@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>منظمة يو للسلام والتنمية | حياة كريمة للجميع</title>
+<meta name="description" content="منظمة يو للسلام والتنمية — منظمة مجتمع مدني يمنية تعمل على السلام والتعايش والتنمية والاستجابة الإنسانية وتمكين المجتمع.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="a.css">
+</head>
+<body>
+<div class="scroll-progress"></div>
+
+<!-- Header (glass) -->
+<header class="site-header" data-header>
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../shared/logo.svg" alt="YOU for Peace and Development">
+    </a>
+    <div class="nav-primary-links">
+      <a href="index.html" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="about.html" data-ar="من نحن" data-en="About">من نحن</a>
+      <a href="programs.html" data-ar="البرامج" data-en="Programs">البرامج</a>
+      <a href="projects.html" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+      <a href="news.html" data-ar="الإعلام" data-en="Media">الإعلام</a>
+      <a href="volunteers.html" data-ar="التطوع" data-en="Volunteer">التطوع</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="YOUtoggleLang()" aria-label="Language"><span data-lang-label>EN</span></button>
+      <button class="icon-btn" onclick="YOUtoggleTheme()" aria-label="Theme"><span data-theme-icon>🌙</span></button>
+      <button class="icon-btn nav-toggle" data-nav-toggle aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- Magical Drawer -->
+<div class="nav-backdrop" data-nav-backdrop></div>
+<aside class="magical-drawer" data-nav-menu>
+  <div class="drawer-header">
+    <span class="drawer-close" data-nav-toggle>✕</span>
+  </div>
+  <div class="drawer-body">
+    <a href="index.html" class="active" style="--i:1"><span class="ic">🏠</span> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a>
+    <a href="about.html" style="--i:2"><span class="ic">📖</span> <span data-ar="من نحن" data-en="About">من نحن</span></a>
+    <a href="programs.html" style="--i:3"><span class="ic">📚</span> <span data-ar="البرامج" data-en="Programs">البرامج</span></a>
+    <a href="projects.html" style="--i:4"><span class="ic">📁</span> <span data-ar="المشاريع" data-en="Projects">المشاريع</span></a>
+    <a href="news.html" style="--i:5"><span class="ic">📰</span> <span data-ar="الإعلام" data-en="Media">الإعلام</span></a>
+    <a href="transparency.html" style="--i:6"><span class="ic">🔍</span> <span data-ar="الشفافية" data-en="Transparency">الشفافية</span></a>
+    <a href="volunteers.html" style="--i:7"><span class="ic">🤝</span> <span data-ar="التطوع" data-en="Volunteer">التطوع</span></a>
+    <a href="training.html" style="--i:8"><span class="ic">🎓</span> <span data-ar="التدريب" data-en="Training">التدريب</span></a>
+    <a href="partners.html" style="--i:9"><span class="ic">🤝</span> <span data-ar="الشركاء" data-en="Partners">الشركاء</span></a>
+    <a href="stories.html" style="--i:10"><span class="ic">⭐</span> <span data-ar="قصص ناجحة" data-en="Success Stories">قصص ناجحة</span></a>
+    <a href="contact.html" style="--i:11"><span class="ic">📞</span> <span data-ar="تواصل" data-en="Contact">تواصل</span></a>
+    <a href="support.html" class="btn btn-primary" style="margin-top:1rem; --i:12"><span data-ar="ادعمنا" data-en="Support Us">ادعمنا</span></a>
+  </div>
+  <div class="drawer-footer">
+    <small>© YOU for Peace and Development</small>
+  </div>
+</aside>
+
+<main>
+  <!-- ========== HERO SECTION (SUPERB MAGICAL REDESIGN) ========== -->
+  <section class="hero-magical">
+    <div class="hero-bg-layer"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="hero-badge" data-ar="منظمة مجتمع مدني يمنية · تأسست 2022" data-en="Yemeni Civil Society Org · Est. 2022">منظمة مجتمع مدني يمنية · تأسست 2022</span>
+        <h1 class="hero-title" data-ar="حياة كريمة للجميع" data-en="A Decent Life for All">حياة كريمة للجميع</h1>
+        <p class="hero-description" data-ar="نعمل وفق نهج إنساني وتنموي يركّز على خدمة الإنسان وتعزيز قيم السلام والتعايش، من خلال البرامج والمبادرات وبناء القدرات والشراكات الفاعلة." data-en="We work through a humanitarian and developmental approach focused on serving people and promoting peace and coexistence, via programs, initiatives, capacity-building, and effective partnerships.">نعمل وفق نهج إنساني وتنموي يركّز على خدمة الإنسان وتعزيز قيم السلام والتعايش، من خلال البرامج والمبادرات وبناء القدرات والشراكات الفاعلة.</p>
+        <div class="hero-buttons">
+          <a href="support.html" class="btn btn-primary" data-ar="تبرّع الآن" data-en="Donate Now">تبرّع الآن</a>
+          <a href="projects.html" class="btn btn-outline-light" data-ar="استكشف مشاريعنا" data-en="Explore Projects">استكشف مشاريعنا</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><div class="stat-number"><span data-count="48000" data-suffix="+">0</span></div><div class="stat-label" data-ar="مستفيد" data-en="Beneficiaries">مستفيد</div></div>
+          <div class="stat-item"><div class="stat-number"><span data-count="36">0</span></div><div class="stat-label" data-ar="مشروع ومبادرة" data-en="Projects & Initiatives">مشروع ومبادرة</div></div>
+          <div class="stat-item"><div class="stat-number"><span data-count="12">0</span></div><div class="stat-label" data-ar="شريك ومانح" data-en="Partners & Donors">شريك ومانح</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="floating-orb orb1"></div>
+    <div class="floating-orb orb2"></div>
+    <div class="floating-orb orb3"></div>
+  </section>
+
+  <!-- ========== PILLARS SECTION ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom: 3rem;">
+        <span class="eyebrow" data-ar="مجالات عملنا" data-en="Our Work Areas">مجالات عملنا</span>
+        <h2 class="h-title" data-ar="أربعة مسارات لخدمة الإنسان" data-en="Four Tracks to Serve Humanity">أربعة مسارات لخدمة الإنسان</h2>
+      </div>
+      <div class="pillar-grid">
+        <div class="card pillar-card reveal"><div class="ic">🕊️</div><h3 data-ar="السلام والتعايش" data-en="Peace & Coexistence">السلام والتعايش</h3><p data-ar="تعزيز قيم السلام وبناء مجتمعات أكثر تماسكاً واستقراراً." data-en="Promoting peace values and building more cohesive, stable communities.">تعزيز قيم السلام وبناء مجتمعات أكثر تماسكاً واستقراراً.</p></div>
+        <div class="card pillar-card reveal"><div class="ic">🤲</div><h3 data-ar="التنمية والاستجابة الإنسانية" data-en="Development & Response">التنمية والاستجابة الإنسانية</h3><p data-ar="برامج إنسانية وتنموية تحسّن جودة الحياة وتستجيب للاحتياجات." data-en="Humanitarian and development programs improving quality of life.">برامج إنسانية وتنموية تحسّن جودة الحياة وتستجيب للاحتياجات.</p></div>
+        <div class="card pillar-card reveal"><div class="ic">📈</div><h3 data-ar="التمكين وبناء القدرات" data-en="Empowerment & Capacity">التمكين وبناء القدرات</h3><p data-ar="تمكين الشباب والنساء والفئات الأكثر احتياجاً وتوسيع فرص المشاركة." data-en="Empowering youth, women and the most vulnerable, expanding participation.">تمكين الشباب والنساء والفئات الأكثر احتياجاً وتوسيع فرص المشاركة.</p></div>
+        <div class="card pillar-card reveal"><div class="ic">👥</div><h3 data-ar="المبادرات والمشاركة المجتمعية" data-en="Initiatives & Community">المبادرات والمشاركة المجتمعية</h3><p data-ar="تعزيز العمل التطوعي والمبادرات وترسيخ ثقافة المسؤولية المجتمعية." data-en="Promoting volunteerism, initiatives and a culture of social responsibility.">تعزيز العمل التطوعي والمبادرات وترسيخ ثقافة المسؤولية المجتمعية.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== IMPACT SPLIT SECTION ========== -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container split">
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1000" alt="توزيع المساعدات" style="border-radius: var(--r-xl); box-shadow: var(--sh-md); width: 100%;">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow" data-ar="أثرنا على الأرض" data-en="Our Impact on the Ground">أثرنا على الأرض</span>
+        <h2 class="h-title" data-ar="نصل إلى الأسر النازحة والأكثر هشاشة" data-en="Reaching IDPs and the Most Vulnerable">نصل إلى الأسر النازحة والأكثر هشاشة</h2>
+        <p class="h-sub" data-ar="من السلة الرمضانية إلى مشاريع دفء الشتاء، نوصل الدعم مباشرةً إلى مخيمات النزوح في مأرب وغيرها بشفافية كاملة." data-en="From Ramadan baskets to winterization projects, we deliver aid directly to displacement camps in Marib and beyond, with full transparency.">من السلة الرمضانية إلى مشاريع دفء الشتاء، نوصل الدعم مباشرةً إلى مخيمات النزوح في مأرب وغيرها بشفافية كاملة.</p>
+        <div class="impact-row">
+          <div class="impact-cell"><div class="stat-num"><span data-count="9500" data-suffix="+">0</span></div><div data-ar="سلة غذائية" data-en="Food baskets">سلة غذائية</div></div>
+          <div class="impact-cell"><div class="stat-num"><span data-count="4200" data-suffix="+">0</span></div><div data-ar="حقيبة شتوية" data-en="Winter kits">حقيبة شتوية</div></div>
+          <div class="impact-cell"><div class="stat-num"><span data-count="18">0</span></div><div data-ar="مخيم نزوح" data-en="Camps reached">مخيم نزوح</div></div>
+        </div>
+        <a href="transparency.html" class="btn btn-nav" style="margin-top: 1.5rem;" data-ar="اطّلع على تقارير الأثر" data-en="View Impact Reports">اطّلع على تقارير الأثر</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED PROJECTS SECTION ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+        <span class="eyebrow" data-ar="مشاريعنا" data-en="Our Projects">مشاريعنا</span>
+        <h2 class="h-title" data-ar="مشاريع تُحدث فرقاً حقيقياً" data-en="Projects That Make a Real Difference">مشاريع تُحدث فرقاً حقيقياً</h2>
+      </div>
+      <div class="proj-grid">
+        <div class="card proj-card reveal">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&q=80&w=800" alt="السلة الرمضانية"></div>
+          <div class="body">
+            <span class="badge" data-ar="استجابة إنسانية" data-en="Humanitarian">استجابة إنسانية</span>
+            <h3 data-ar="السلة الرمضانية للأسر النازحة" data-en="Ramadan Food Basket (IDPs)">السلة الرمضانية للأسر النازحة</h3>
+            <div class="progress"><span style="width:82%"></span></div>
+            <small data-ar="82% من الهدف · مأرب 2026" data-en="82% of goal · Marib 2026">82% من الهدف · مأرب 2026</small>
+          </div>
+        </div>
+        <div class="card proj-card reveal">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1535090467336-9501f96eef89?auto=format&fit=crop&q=80&w=800" alt="دفء الشتاء"></div>
+          <div class="body">
+            <span class="badge" data-ar="استجابة إنسانية" data-en="Humanitarian">استجابة إنسانية</span>
+            <h3 data-ar="دفء الشتاء للأسر النازحة" data-en="Winterization Support (IDPs)">دفء الشتاء للأسر النازحة</h3>
+            <div class="progress"><span style="width:67%"></span></div>
+            <small data-ar="67% من الهدف · مأرب 2026" data-en="67% of goal · Marib 2026">67% من الهدف · مأرب 2026</small>
+          </div>
+        </div>
+        <div class="card proj-card reveal">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb0?auto=format&fit=crop&q=80&w=800" alt="مجتمع بلا قات"></div>
+          <div class="body">
+            <span class="badge" data-ar="مبادرة مجتمعية" data-en="Community Initiative">مبادرة مجتمعية</span>
+            <h3 data-ar="مبادرة مجتمع بلا قات" data-en="Community Without Qat">مبادرة مجتمع بلا قات</h3>
+            <div class="progress"><span style="width:55%"></span></div>
+            <small data-ar="55% من الهدف · برنامج مستمر" data-en="55% of goal · Ongoing">55% من الهدف · برنامج مستمر</small>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top: 2rem;"><a href="projects.html" class="btn btn-nav" data-ar="كل المشاريع" data-en="All Projects">كل المشاريع</a></div>
+    </div>
+  </section>
+
+  <!-- ========== STORIES SECTION ========== -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom: 2.5rem;">
+        <span class="eyebrow" data-ar="قصص ناجحة" data-en="Success Stories">قصص ناجحة</span>
+        <h2 class="h-title" data-ar="خلف كل رقم، قصة إنسان" data-en="Behind Every Number, a Human Story">خلف كل رقم، قصة إنسان</h2>
+      </div>
+      <div class="story-grid">
+        <div class="story-card reveal"><img src="https://images.unsplash.com/photo-1518398046578-8cca57782e17?auto=format&fit=crop&q=80&w=1000" alt=""><div class="meta"><span class="badge" style="background:rgba(255,255,255,.2);color:#fff" data-ar="دفء الشتاء" data-en="Winterization">دفء الشتاء</span><h3 data-ar="ابتسامة طفل في مأرب" data-en="A Child's Smile in Marib">ابتسامة طفل في مأرب</h3></div></div>
+        <div class="story-card reveal"><img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&q=80&w=1000" alt=""><div class="meta"><span class="badge" style="background:rgba(255,255,255,.2);color:#fff" data-ar="كرامة الأسرة" data-en="Family Dignity">كرامة الأسرة</span><h3 data-ar="دفء يصل إلى الخيمة" data-en="Warmth Reaches the Tent">دفء يصل إلى الخيمة</h3></div></div>
+        <div class="story-card reveal"><img src="https://images.unsplash.com/photo-1529156069898-49953eb1f5bc?auto=format&fit=crop&q=80&w=1000" alt=""><div class="meta"><span class="badge" style="background:rgba(255,255,255,.2);color:#fff" data-ar="مجتمع بلا قات" data-en="Qat-Free">مجتمع بلا قات</span><h3 data-ar="شباب يصنعون التغيير" data-en="Youth Making Change">شباب يصنعون التغيير</h3></div></div>
+      </div>
+      <div class="text-center" style="margin-top: 2rem;"><a href="stories.html" class="btn btn-nav" data-ar="المزيد من القصص" data-en="More Stories">المزيد من القصص</a></div>
+    </div>
+  </section>
+
+  <!-- ========== CTA + IMPACT CALCULATOR ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2 data-ar="كن جزءاً من الأثر" data-en="Be Part of the Impact">كن جزءاً من الأثر</h2>
+        <p data-ar="تبرعك أو تطوعك يصنع فرقاً ملموساً في حياة الأسر النازحة والفئات الأكثر احتياجاً." data-en="Your donation or volunteering makes a tangible difference in the lives of IDPs and the most vulnerable.">تبرعك أو تطوعك يصنع فرقاً ملموساً في حياة الأسر النازحة والفئات الأكثر احتياجاً.</p>
+        <div class="impact-calculator mx-auto" style="max-width: 600px;">
+          <h3 data-ar="حاسبة الأثر الإنساني" data-en="Humanitarian Impact Calculator">حاسبة الأثر الإنساني</h3>
+          <p data-ar="قيمة التبرع:" data-en="Donation Amount:">قيمة التبرع: <span data-impact-val style="font-weight:900;">$50</span></p>
+          <input type="range" class="impact-range" min="50" max="1000" step="50" value="50" data-impact-range>
+          <p data-ar="سيوفر سلة غذائية متكاملة لـ" data-en="Will provide a full food basket for">سيوفر سلة غذائية متكاملة لـ</p>
+          <div class="impact-result" data-impact-result data-ar="عائلة واحدة" data-en="1 Family">عائلة واحدة</div>
+        </div>
+        <div class="hero-buttons" style="justify-content:center; margin-top:1rem;">
+          <a href="support.html" class="btn btn-primary" data-ar="تبرّع الآن" data-en="Donate Now">تبرّع الآن</a>
+          <a href="volunteers.html" class="btn btn-outline" style="color:#fff" data-ar="تطوّع معنا" data-en="Volunteer">تطوّع معنا</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARTNERS SECTION ========== -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="container text-center">
+      <span class="eyebrow" data-ar="شركاؤنا" data-en="Our Partners">شركاؤنا</span>
+      <h2 class="h-title" style="margin-bottom: 2rem;" data-ar="نعمل مع جهات موثوقة" data-en="We Work With Trusted Entities">نعمل مع جهات موثوقة</h2>
+      <div class="logo-row">
+        <div class="logo-chip">YOU · FS</div>
+        <div class="logo-chip">مؤسسة غراس المجد</div>
+        <div class="logo-chip">وزارة الشؤون الاجتماعية</div>
+        <div class="logo-chip">شركاء محليون</div>
+        <div class="logo-chip">مانحون دوليون</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand"><img src="../shared/logo.svg" alt="YOU"></div>
+      <p style="margin-top: 1rem;">منظمة يو للسلام والتنمية — منظمة مجتمع مدني غير ربحية، مرخّصة برقم (601).</p>
+    </div>
+    <div>
+      <h4 data-ar="روابط" data-en="Links">روابط</h4>
+      <a href="about.html" data-ar="من نحن" data-en="About">من نحن</a>
+      <a href="programs.html" data-ar="البرامج" data-en="Programs">البرامج</a>
+      <a href="projects.html" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+    </div>
+    <div>
+      <h4 data-ar="المشاركة" data-en="Engage">المشاركة</h4>
+      <a href="volunteers.html" data-ar="المتطوعون" data-en="Volunteers">المتطوعون</a>
+      <a href="support.html" data-ar="ادعمنا" data-en="Support Us">ادعمنا</a>
+    </div>
+    <div>
+      <h4 data-ar="تواصل" data-en="Contact">تواصل</h4>
+      <a href="contact.html" data-ar="مأرب، اليمن" data-en="Marib, Yemen">مأرب، اليمن</a>
+      <a href="mailto:info@you.org">info@you.org</a>
+      <button class="btn btn-outline" style="margin-top: 1rem; padding: 0.4rem 1rem;" onclick="openAdminLogin()" data-ar="🔒 بوابة الإدارة" data-en="🔒 Admin Portal">🔒 بوابة الإدارة</button>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-ar="© 2026 منظمة يو للسلام والتنمية. جميع الحقوق محفوظة." data-en="© 2026 YOU for Peace and Development. All rights reserved.">© 2026 منظمة يو للسلام والتنمية. جميع الحقوق محفوظة.</span>
+  </div>
+</footer>
+
+<!-- ========== ADMIN LOGIN MODAL ========== -->
+<div class="admin-modal-overlay" id="adminLoginModal">
+  <div class="admin-modal-card">
+    <button class="close-modal" onclick="closeAdminLogin()">✕</button>
+    <div class="modal-icon">🔒</div>
+    <h3 data-ar="بوابة الإدارة" data-en="Admin Portal">بوابة الإدارة</h3>
+    <p data-ar="يرجى إدخال رمز الإدارة للوصول إلى لوحة التحكم." data-en="Please enter the admin passcode to access the dashboard.">يرجى إدخال رمز الإدارة للوصول إلى لوحة التحكم.</p>
+    <div class="field">
+      <input type="password" id="adminPasscode" placeholder="رمز الدخول (admin123)...">
+      <div id="loginError" class="login-error" hidden data-ar="الرمز غير صحيح، حاول مرة أخرى." data-en="Incorrect passcode, please try again.">الرمز غير صحيح، حاول مرة أخرى.</div>
+    </div>
+    <button class="btn btn-primary" style="width: 100%;" onclick="attemptAdminLogin()" data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</button>
+  </div>
+</div>
+
+<script src="../shared/app.js"></script>
+<script>
+  function openAdminLogin() { document.getElementById('adminLoginModal').classList.add('active'); }
+  function closeAdminLogin() { document.getElementById('adminLoginModal').classList.remove('active'); }
+  function attemptAdminLogin() {
+    var inp = document.getElementById('adminPasscode');
+    var err = document.getElementById('loginError');
+    if(inp && inp.value === 'admin123') {
+      sessionStorage.setItem('adminLoggedIn', 'true');
+      window.location.href = 'admin/index.html';
+    } else if(err) err.hidden = false;
+  }
+  document.addEventListener('click', function(e) {
+    if(e.target.classList && e.target.classList.contains('admin-modal-overlay')) {
+      document.getElementById('adminLoginModal').classList.remove('active');
+    }
+  });
+</script>
+</body>
+</html>

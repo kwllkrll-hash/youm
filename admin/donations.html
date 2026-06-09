@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>التبرعات والمانحين | YOU Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" data-sidebar>
+    <div class="sidebar-header">
+      <img src="../../shared/logo.svg" alt="YOU Logo" class="admin-logo">
+      <button class="icon-btn mobile-close" onclick="toggleSidebar()">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">📊</span> نظرة عامة</a>
+      <a href="projects.html"><span class="ic">📝</span> إدارة المشاريع</a>
+      <a href="donations.html" class="active"><span class="ic">💰</span> التبرعات والمانحين</a>
+      <a href="news.html"><span class="ic">📰</span> الأخبار والإعلام</a>
+      <a href="volunteers.html"><span class="ic">👥</span> المتطوعون</a>
+      <a href="reports.html"><span class="ic">📈</span> التقارير</a>
+      <a href="users.html"><span class="ic">🛡️</span> المستخدمون</a>
+      <a href="settings.html"><span class="ic">⚙️</span> إعدادات المنصة</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-profile">
+        <div class="avatar">A</div>
+        <div class="user-info"><strong>المدير العام</strong><span>admin@you.org</span></div>
+      </div>
+      <button class="btn btn-outline" style="width:100%; padding:.5rem; margin-top:1rem;" onclick="adminLogout()">تسجيل خروج</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <header class="main-header">
+      <div class="header-left">
+        <button class="icon-btn sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <h1 class="page-title">التبرعات والمانحين</h1>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-primary" style="padding: 0.5rem 1.2rem;">تصدير Excel 📥</button>
+        <button class="icon-btn" onclick="YOUtoggleTheme()"><span data-theme-icon>☀️</span></button>
+        <button class="icon-btn" aria-label="Notifications">🔔<span class="badge-dot"></span></button>
+      </div>
+    </header>
+
+    <div class="content-body reveal in">
+      
+      <!-- Summary Row -->
+      <div class="summary-row">
+        <div class="summary-cell">
+          <span class="big" style="color:var(--primary);">$124,500</span>
+          <span class="sub">إجمالي التبرعات</span>
+        </div>
+        <div class="summary-cell">
+          <span class="big" style="color:var(--success);">342</span>
+          <span class="sub">عدد المانحين</span>
+        </div>
+        <div class="summary-cell">
+          <span class="big" style="color:var(--you-gold);">$364</span>
+          <span class="sub">متوسط التبرع</span>
+        </div>
+        <div class="summary-cell">
+          <span class="big" style="color:var(--you-green-400);">12</span>
+          <span class="sub">الشراكات الاستراتيجية</span>
+        </div>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="card-title">اتجاهات التبرعات (الأشهر الستة الماضية)</h3>
+          <canvas id="donationsTrendChart" height="100"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 class="card-title">طرق الدفع</h3>
+          <canvas id="paymentMethodChart" height="200"></canvas>
+        </div>
+      </div>
+
+      <div class="data-card">
+        <div class="data-header">
+          <div class="search-bar">
+            <input type="text" placeholder="بحث باسم المانح أو رقم العملية...">
+            <span class="ic">🔍</span>
+          </div>
+          <div class="filter-bar" style="margin-bottom:0;">
+            <button class="filter-btn active">الكل</button>
+            <button class="filter-btn">مكتمل</button>
+            <button class="filter-btn">قيد المعالجة</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr><th>رقم العملية</th><th>المانح</th><th>المشروع</th><th>وسيلة الدفع</th><th>المبلغ</th><th>التاريخ</th><th>الحالة</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>#TRX-9821</td><td>فاعل خير</td><td>السلة الرمضانية</td><td>حوالة بنكية</td><td class="amount">$500.00</td><td>2026-06-09</td><td><span class="status-badge success">مكتمل</span></td></tr>
+              <tr><td>#TRX-9820</td><td>مؤسسة غراس المجد</td><td>دفء الشتاء</td><td>شراكة</td><td class="amount">$12,000.00</td><td>2026-06-08</td><td><span class="status-badge success">مكتمل</span></td></tr>
+              <tr><td>#TRX-9819</td><td>أحمد اليمني</td><td>كفالة يتيم</td><td>بطاقة ائتمانية</td><td class="amount">$150.00</td><td>2026-06-08</td><td><span class="status-badge pending">قيد المعالجة</span></td></tr>
+              <tr><td>#TRX-9818</td><td>شركة الأفق للتجارة</td><td>مجتمع بلا قات</td><td>حوالة بنكية</td><td class="amount">$2,500.00</td><td>2026-06-07</td><td><span class="status-badge success">مكتمل</span></td></tr>
+              <tr><td>#TRX-9817</td><td>محمد سالم</td><td>عام (غير محدد)</td><td>PayPal</td><td class="amount">$50.00</td><td>2026-06-05</td><td><span class="status-badge success">مكتمل</span></td></tr>
+              <tr><td>#TRX-9816</td><td>مؤسسة الأيادي البيضاء</td><td>السلة الرمضانية</td><td>شراكة</td><td class="amount">$5,000.00</td><td>2026-06-04</td><td><span class="status-badge info">مجدول</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../../shared/app.js"></script>
+<script>
+function toggleSidebar() { document.querySelector('[data-sidebar]').classList.toggle('open'); }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const ctx1 = document.getElementById('donationsTrendChart').getContext('2d');
+  new Chart(ctx1, {
+    type: 'line',
+    data: {
+      labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+      datasets: [{
+        label: 'التبرعات',
+        data: [15000, 22000, 18000, 45000, 32000, 40000],
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+        borderWidth: 3,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#3b82f6',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  const ctx2 = document.getElementById('paymentMethodChart').getContext('2d');
+  new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['حوالة بنكية', 'شراكة', 'بطاقة ائتمانية', 'PayPal'],
+      datasets: [{
+        data: [40, 35, 15, 10],
+        backgroundColor: ['#0ea5e9', '#7bd043', '#f59e0b', '#8b5cf6'],
+        borderWidth: 0,
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'right', labels: { padding: 15, font: { weight: 'bold' } } } }
+    }
+  });
+});
+</script>
+</body>
+</html>

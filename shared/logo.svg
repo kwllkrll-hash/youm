@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" role="img" aria-label="YOU for Peace and Development">
+  <!-- Stylized YOU mark: Y as human figure -->
+  <g transform="translate(8,6)">
+    <!-- head -->
+    <circle cx="44" cy="20" r="13" fill="#0B2D52"/>
+    <!-- Y body / arms -->
+    <path d="M44 34
+             L26 60
+             L33 64
+             L44 47
+             L55 64
+             L62 60 Z" fill="#0B2D52"/>
+    <path d="M40 50 h8 v34 h-8 z" fill="#0B2D52"/>
+    <!-- O -->
+    <circle cx="92" cy="58" r="26" fill="none" stroke="#0B2D52" stroke-width="11"/>
+    <!-- U (green) -->
+    <path d="M126 32 v26 a24 24 0 0 0 48 0 v-26"
+          fill="none" stroke="#5BA829" stroke-width="11" stroke-linecap="round"/>
+  </g>
+  <!-- Arabic + English lockup -->
+  <g transform="translate(8,98)">
+    <text x="0" y="0" font-family="'Tajawal','Segoe UI',sans-serif" font-size="15" font-weight="700" fill="#0B2D52">يو للسلام والتنمية</text>
+  </g>
+  <g transform="translate(206,30)">
+    <text x="0" y="0" font-family="'Tajawal',sans-serif" font-size="20" font-weight="700" fill="#0B2D52" text-anchor="start">أنــت</text>
+    <text x="0" y="24" font-family="'Tajawal',sans-serif" font-size="18" font-weight="700" fill="#0B2D52">للإنسان</text>
+    <text x="0" y="50" font-family="'Segoe UI',sans-serif" font-size="13" font-weight="600" fill="#5BA829">You for</text>
+    <text x="0" y="68" font-family="'Segoe UI',sans-serif" font-size="13" font-weight="600" fill="#5BA829">Humanity</text>
+  </g>
+</svg>

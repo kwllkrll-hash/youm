@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إدارة المستخدمين والصلاحيات | YOU Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" data-sidebar>
+    <div class="sidebar-header">
+      <img src="../../shared/logo.svg" alt="YOU Logo" class="admin-logo">
+      <button class="icon-btn mobile-close" onclick="toggleSidebar()">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">📊</span> نظرة عامة</a>
+      <a href="projects.html"><span class="ic">📝</span> إدارة المشاريع</a>
+      <a href="donations.html"><span class="ic">💰</span> التبرعات والمانحين</a>
+      <a href="news.html"><span class="ic">📰</span> الأخبار والإعلام</a>
+      <a href="volunteers.html"><span class="ic">👥</span> المتطوعون</a>
+      <a href="reports.html"><span class="ic">📈</span> التقارير</a>
+      <a href="users.html" class="active"><span class="ic">🛡️</span> المستخدمون</a>
+      <a href="settings.html"><span class="ic">⚙️</span> إعدادات المنصة</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-profile"><div class="avatar">A</div><div class="user-info"><strong>المدير العام</strong><span>admin@you.org</span></div></div>
+      <button class="btn btn-outline" style="width:100%; padding:.5rem; margin-top:1rem;" onclick="adminLogout()">تسجيل خروج</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <header class="main-header">
+      <div class="header-left"><button class="icon-btn sidebar-toggle" onclick="toggleSidebar()">☰</button><h1 class="page-title">إدارة المستخدمين والصلاحيات</h1></div>
+      <div class="header-right">
+        <button class="btn btn-primary" style="padding: 0.5rem 1.2rem; display:flex; gap:0.5rem; background:linear-gradient(135deg, var(--you-green), #14a331); box-shadow:0 10px 20px rgba(23,179,54,0.3);" onclick="document.getElementById('addUserModal').classList.add('active')">➕ إضافة مستخدم</button>
+        <button class="icon-btn" onclick="YOUtoggleTheme()"><span data-theme-icon>☀️</span></button>
+        <button class="icon-btn" aria-label="Notifications">🔔<span class="badge-dot"></span></button>
+      </div>
+    </header>
+
+    <div class="content-body reveal in">
+      <!-- Magical KPI Cards -->
+      <div class="stats-grid" style="margin-bottom:2.5rem;">
+        <div class="stat-card" style="background:linear-gradient(135deg, var(--bg-soft), var(--bg)); border:1px solid rgba(255,255,255,0.05); box-shadow:var(--shadow-md);">
+          <div class="stat-icon" style="background:rgba(59,130,246,0.15); font-size:1.8rem; border-radius:14px;">👥</div>
+          <div class="stat-info"><span class="label" style="font-weight:700;">إجمالي المستخدمين</span><span class="value" style="font-size:1.8rem;">12</span><span class="trend up" style="font-weight:800;">نشطين حالياً: 5</span></div>
+        </div>
+        <div class="stat-card" style="background:linear-gradient(135deg, var(--bg-soft), var(--bg)); border:1px solid rgba(255,255,255,0.05); box-shadow:var(--shadow-md);">
+          <div class="stat-icon" style="background:rgba(23,179,54,0.15); font-size:1.8rem; border-radius:14px;">👑</div>
+          <div class="stat-info"><span class="label" style="font-weight:700;">مدراء النظام</span><span class="value" style="font-size:1.8rem;">3</span><span class="trend neutral" style="font-weight:800;">صلاحيات كاملة</span></div>
+        </div>
+        <div class="stat-card" style="background:linear-gradient(135deg, var(--bg-soft), var(--bg)); border:1px solid rgba(255,255,255,0.05); box-shadow:var(--shadow-md);">
+          <div class="stat-icon" style="background:rgba(245,158,11,0.15); font-size:1.8rem; border-radius:14px;">✍️</div>
+          <div class="stat-info"><span class="label" style="font-weight:700;">محرري محتوى</span><span class="value" style="font-size:1.8rem;">4</span><span class="trend up" style="font-weight:800;">قسم الإعلام</span></div>
+        </div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar" style="margin-bottom:1.5rem;">
+        <button class="filter-btn active">الكل</button>
+        <button class="filter-btn">المدراء</button>
+        <button class="filter-btn">المحررين</button>
+        <button class="filter-btn">مسؤولي البرامج</button>
+        <div style="flex-grow:1;"></div>
+        <input type="text" placeholder="بحث عن مستخدم..." class="search-box" style="padding:0.6rem 1rem; border-radius:12px; border:1px solid var(--border); background:var(--bg); color:var(--text); width:300px;">
+      </div>
+
+      <!-- Users Grid -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:1.5rem;">
+        <!-- Admin User -->
+        <div style="background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.05); box-shadow:0 15px 35px rgba(0,0,0,0.2); border-radius:24px; padding:2rem; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; right:0; width:100%; height:6px; background:linear-gradient(90deg, var(--you-navy), var(--you-green));"></div>
+          <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem;">
+            <div style="width:70px; height:70px; border-radius:50%; background:var(--you-navy); color:#fff; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:900;">A</div>
+            <div>
+              <h3 style="font-size:1.3rem; font-weight:900; color:var(--text); margin:0 0 0.3rem 0;">أحمد المدير</h3>
+              <p style="color:var(--text-soft); font-weight:600; font-size:0.9rem; margin:0;">admin@you.org</p>
+            </div>
+          </div>
+          <div style="margin-bottom:1.5rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="background:rgba(59,130,246,0.1); color:#3b82f6; padding:0.4rem 1rem; border-radius:20px; font-weight:800; font-size:0.85rem;">👑 مدير نظام</span>
+            <span style="background:rgba(23,179,54,0.1); color:#17b336; padding:0.4rem 1rem; border-radius:20px; font-weight:800; font-size:0.85rem;">نشط الآن</span>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-outline" style="flex:1; padding:0.5rem; font-size:0.9rem;">تعديل الصلاحيات</button>
+            <button class="btn btn-outline" style="flex:1; padding:0.5rem; font-size:0.9rem; color:var(--danger); border-color:rgba(239,68,68,0.3);">إيقاف</button>
+          </div>
+        </div>
+
+        <!-- Editor User -->
+        <div style="background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.05); box-shadow:0 15px 35px rgba(0,0,0,0.2); border-radius:24px; padding:2rem; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; right:0; width:100%; height:6px; background:var(--you-gold);"></div>
+          <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem;">
+            <div style="width:70px; height:70px; border-radius:50%; background:var(--surface-2); color:var(--text); display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:900;">S</div>
+            <div>
+              <h3 style="font-size:1.3rem; font-weight:900; color:var(--text); margin:0 0 0.3rem 0;">سعاد المحررة</h3>
+              <p style="color:var(--text-soft); font-weight:600; font-size:0.9rem; margin:0;">editor@you.org</p>
+            </div>
+          </div>
+          <div style="margin-bottom:1.5rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="background:rgba(245,158,11,0.1); color:#f59e0b; padding:0.4rem 1rem; border-radius:20px; font-weight:800; font-size:0.85rem;">✍️ محرر إعلامي</span>
+            <span style="background:var(--surface-2); color:var(--text-soft); padding:0.4rem 1rem; border-radius:20px; font-weight:800; font-size:0.85rem;">آخر دخول أمس</span>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-outline" style="flex:1; padding:0.5rem; font-size:0.9rem;">تعديل الصلاحيات</button>
+            <button class="btn btn-outline" style="flex:1; padding:0.5rem; font-size:0.9rem; color:var(--danger); border-color:rgba(239,68,68,0.3);">إيقاف</button>
+          </div>
+        </div>
+
+        <!-- Program Manager -->
+        <div style="background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.05); box-shadow:0 15px 35px rgba(0,0,0,0.2); border-radius:24px; padding:2rem; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; right:0; width:100%; height:6px; background:var(--you-green);"></div>
+          <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem;">
+            <div style="width:70px; height:70px; border-radius:50%; background:var(--surface-2); color:var(--text); display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:900;">K</div>
+            <div>
+              <h3 style="font-size:1.3rem; font-weight:900; color:var(--text); margin:0 0 0.3rem 0;">خالد المشاريع</h3>
+              <p style="color:var(--text-soft); font-weight:600; font-size:0.9rem; margin:0;">projects@you.org</p>
+            </div>
+          </div>
+          <div style="margin-bottom:1.5rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="background:rgba(23,179,54,0.1); color:var(--you-green); padding:0.4rem 1rem; border-radius:20px; font-weight:800; font-size:0.85rem;">📝 مسؤول برامج</span>
+            <span style="background:rgba(239,68,68,0.1); color:var(--danger); padding:0.4rem 1rem; border-radius:20px; font-weight:800; font-size:0.85rem;">غير نشط</span>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-outline" style="flex:1; padding:0.5rem; font-size:0.9rem;">تعديل الصلاحيات</button>
+            <button class="btn btn-primary" style="flex:1; padding:0.5rem; font-size:0.9rem;">تفعيل</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Add User Modal - Epic Design -->
+<div class="admin-modal-overlay" id="addUserModal">
+  <div class="admin-modal-card" style="max-width:700px; width:95%; text-align:start; background:var(--glass-bg); backdrop-filter:blur(30px); border:1px solid rgba(255,255,255,0.1); box-shadow:0 25px 50px rgba(0,0,0,0.5); border-radius:24px; padding:0; overflow:hidden;">
+    <div style="background:linear-gradient(135deg, var(--you-navy), #061930); padding:2rem; position:relative;">
+      <button class="icon-btn" onclick="document.getElementById('addUserModal').classList.remove('active')" style="position:absolute; left:2rem; top:2rem; background:rgba(255,255,255,0.1); color:#fff;">✕</button>
+      <h3 style="font-size:var(--fs-2xl); font-weight:900; margin:0; color:#fff; display:flex; align-items:center; gap:1rem;"><span style="background:var(--you-gold); padding:0.5rem; border-radius:12px; font-size:1.5rem;">🛡️</span> إضافة مستخدم جديد</h3>
+      <p style="color:rgba(255,255,255,0.7); margin-top:0.5rem; margin-right:3.5rem;">امنح الصلاحيات المناسبة لأعضاء الفريق للوصول إلى لوحة التحكم.</p>
+    </div>
+    <div style="padding:2.5rem;">
+      <div class="field" style="margin-bottom:1.5rem;">
+        <label style="font-weight:800; color:var(--text); margin-bottom:0.8rem; display:block;">الاسم الكامل</label>
+        <input type="text" placeholder="اسم المستخدم" style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); font-size:1.1rem; font-weight:700; color:var(--text);">
+      </div>
+      <div class="field" style="margin-bottom:1.5rem;">
+        <label style="font-weight:800; color:var(--text); margin-bottom:0.8rem; display:block;">البريد الإلكتروني (تسجيل الدخول)</label>
+        <input type="email" placeholder="email@you.org" style="width:100%; padding:1rem; border-radius:12px; border:2px solid var(--border); background:var(--bg); font-size:1.1rem; font-weight:700; color:var(--text); text-align:left; direction:ltr;">
+      </div>
+      <div class="field" style="margin-bottom:2rem;">
+        <label style="font-weight:800; color:var(--text); margin-bottom:0.8rem; display:block;">الدور والصلاحيات</label>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
+          <label style="border:2px solid var(--border); padding:1.5rem; border-radius:16px; text-align:center; cursor:pointer; background:var(--surface-2); display:flex; flex-direction:column; gap:0.5rem;">
+            <input type="radio" name="role" value="admin" style="display:none;">
+            <span style="font-size:2rem;">👑</span>
+            <span style="font-weight:900; color:var(--text);">مدير نظام</span>
+            <small style="color:var(--text-soft); font-weight:600;">صلاحيات كاملة</small>
+          </label>
+          <label style="border:2px solid var(--you-green); background:rgba(23,179,54,0.05); padding:1.5rem; border-radius:16px; text-align:center; cursor:pointer; display:flex; flex-direction:column; gap:0.5rem;">
+            <input type="radio" name="role" value="editor" checked style="display:none;">
+            <span style="font-size:2rem;">✍️</span>
+            <span style="font-weight:900; color:var(--you-green);">محرر إعلامي</span>
+            <small style="color:var(--text-soft); font-weight:600;">للأخبار والتقارير</small>
+          </label>
+          <label style="border:2px solid var(--border); padding:1.5rem; border-radius:16px; text-align:center; cursor:pointer; background:var(--surface-2); display:flex; flex-direction:column; gap:0.5rem;">
+            <input type="radio" name="role" value="pm" style="display:none;">
+            <span style="font-size:2rem;">📝</span>
+            <span style="font-weight:900; color:var(--text);">مسؤول برامج</span>
+            <small style="color:var(--text-soft); font-weight:600;">للمشاريع والتبرعات</small>
+          </label>
+        </div>
+      </div>
+      <div style="display:flex; gap:1rem; justify-content:flex-end; border-top:1px solid var(--border); padding-top:2rem;">
+        <button class="btn btn-ghost" onclick="document.getElementById('addUserModal').classList.remove('active')" style="padding:1rem 2rem;">إلغاء</button>
+        <button class="btn btn-primary" onclick="document.getElementById('addUserModal').classList.remove('active')" style="padding:1rem 3rem; font-size:1.1rem; box-shadow:0 10px 20px rgba(123,208,67,0.3);">إضافة المستخدم ✔️</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../shared/app.js"></script>
+<script>
+function toggleSidebar() { document.querySelector('[data-sidebar]').classList.toggle('open'); }
+// Add click handling to custom radio boxes
+document.querySelectorAll('input[type="radio"][name="role"]').forEach(radio => {
+  radio.addEventListener('change', (e) => {
+    document.querySelectorAll('input[type="radio"][name="role"]').forEach(r => {
+      const parent = r.closest('label');
+      parent.style.borderColor = 'var(--border)';
+      parent.style.background = 'var(--surface-2)';
+    });
+    if(e.target.checked) {
+      const parent = e.target.closest('label');
+      parent.style.borderColor = 'var(--you-green)';
+      parent.style.background = 'rgba(23,179,54,0.05)';
+    }
+  });
+});
+</script>
+</body>
+</html>
